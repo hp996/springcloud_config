@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<form action="http://localhost:8080/ajax-server/ul" method="post" enctype="multipart/form-data">
+			<input name="myf" type="file">
+			<button id="upBut">上传</button>
+		</form>
+		
+		
+		
+		<script>
+			
+			// document.getElementById('upBut').onclick = function(){
+				
+			// 	let formData = new FormData();
+				
+			// 	let file = document.getElementById('myf').files[0];
+				
+			// 	console.log(file);
+				
+			// 	formData.append('mf',file);
+				
+			// 	let xhr = new XMLHttpRequest();
+				
+			// 	xhr.withCredentials = true;
+				
+			// 	xhr.onreadystatechange = function(){
+			// 		if(xhr.readyState==4 && xhr.status==200){
+			// 			console.log(xhr.response);
+			// 		}
+			// 	}
+				
+			// 	xhr.open('post','http://localhost:8080/ajax-server/ul');
+			// 	xhr.setRequestHeader('Content-Type','multipart/form-data');
+			// 	xhr.send(formData);
+				
+				
+				
+			}
+			
+			
+		</script>
+		
+	</body>
+</html>

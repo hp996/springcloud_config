@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<table border=1>
+			<thead>
+				<td>用户id</td>
+				<td>用户账号</td>
+				<td>用户密码</td>
+				<td>昵称</td>
+			</thead>
+			<tbody id="tb">
+				
+			</tbody>
+		</table>
+		<script>
+			let xhr=new XMLHttpRequest();
+			let result;
+			//注册事件，用来监听xhr的状态改变
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					
+					result = JSON.parse(xhr.response);
+					
+					
+					console.log(result);
+					
+					//操作dom，把数据放在对应的dom上
+					//操作dom放在监听事件，回调方法里（即数据获取完之后）比较好
+					for (let i=0;i<result.list.length;i++){
+						let newTr=document.createElement('tr');
+						
+						newTr.innerHTML =`
+							<td>${result.list[i].userid}</td>
+							<td>${result.list[i].usercode}</td>
+							<td>${result.list[i].userpwd}</td>
+							<td>${result.list[i].nickname}</td>
+						`
+						//userid、usercode 都是对应实体entity的属性
+						document.getElementById('tb').appendChild(newTr);
+					}
+				}
+			}
+			xhr.open('get',`http://localhost:8080/ajax-server/userinfo/getAll`,true);
+			xhr.send(null);
+		</script>
+	</body>
+</html>

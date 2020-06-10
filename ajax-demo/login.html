@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<div>账号:<input id="usercode" type="text"></div>
+			<div>密码:<input id="userpwd" type="text"></div>
+			<div><button id="loginBtn">登录</button></div>
+		</div>
+		<script>
+			document.getElementById('loginBtn').onclick=function(){
+				let usercode=document.getElementById('usercode').value;
+				let userpwd=document.getElementById('userpwd').value;
+				let xhr=new XMLHttpRequest();
+				//注册事件，用来监听xhr的状态改变
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState==4 && xhr.status==200){
+						console.log(xhr.response);
+					}
+					
+				}
+				xhr.open('get',`http://localhost:8080/ajax-server/userinfo/login?usercode=${usercode}&userpwd=${userpwd}`,true);//1
+				xhr.send(null);//2-4
+				
+			}
+		</script>
+	</body>
+</html>
